@@ -1,6 +1,6 @@
 import unittest
 
-from bankline_parser.data_services import parse_file, parse
+from bankline_parser.data_services import parse
 from bankline_parser.data_services.exceptions import ParseError
 
 from .test_models import vhl_row
@@ -10,7 +10,7 @@ class DataServicesParserTestCase(unittest.TestCase):
 
     def test_nwb_testfile_successful_parse(self):
         with open('tests/data/testfile_nwb') as f:
-            output = parse_file(f)
+            output = parse(f)
 
         self.assertTrue(output.is_valid())
         self.assertEqual(len(output.accounts), 1)
@@ -26,7 +26,7 @@ class DataServicesParserTestCase(unittest.TestCase):
 
     def test_rbs_testfile_successful_parse(self):
         with open('tests/data/testfile_rbs') as f:
-            output = parse_file(f)
+            output = parse(f)
 
         self.assertTrue(output.is_valid())
         self.assertEqual(len(output.accounts), 1)
