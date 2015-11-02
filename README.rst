@@ -23,11 +23,11 @@ Usage
 
 .. code-block:: python
 
-    from bankline_parser.data_services import parse_file, parse
+    from bankline_parser.data_services import parse
 
     # from file
     with open(filename) as f:
-        parsed = parse_file(f)
+        parsed = parse(f)
         if parsed.is_valid():
             print(parsed.account.records[0].transaction_code)
         else:

@@ -3,15 +3,8 @@ from .exceptions import ParseError
 from .utils import IndexTrackingIterator
 
 
-def parse_file(f):
-    return parse(f.readlines())
-
-
-def parse(lines):
-    if len(lines) == 0:
-        raise ParseError("Empty file provided")
-
-    lines_iter = IndexTrackingIterator(lines)
+def parse(iterable):
+    lines_iter = IndexTrackingIterator(iterable)
 
     def parse_account(lines_iter):
         # check for end of iteration on opening label of next account
@@ -57,3 +50,5 @@ def parse(lines):
         return models.DataServicesFile(volume_header_label, accounts)
     except ParseError as e:
         raise ParseError("Line %s: %s" % (lines_iter.current_index, e))
+    except StopIteration:
+        raise ParseError("File ended unexpectedly")
