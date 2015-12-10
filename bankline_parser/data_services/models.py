@@ -52,13 +52,13 @@ class Account(object):
         count_balance = 0
 
         for record in self.records:
-            if record.transaction_code.name.startswith('debit'):
+            if record.is_debit():
                 total_debit += record.amount
                 count_debit += 1
-            elif record.transaction_code.name.startswith('credit'):
+            elif record.is_credit():
                 total_credit += record.amount
                 count_credit += 1
-            elif record.transaction_code == TransactionCode.balance_record:
+            elif record.is_balance():
                 count_balance += 1
 
         utl = self.user_trailer_label
@@ -153,6 +153,19 @@ class BaseRecord(Row):
     branch_account_number = fields.TextField(6, 14)
     type_of_account_code = fields.ZeroFilledField(14, 15)
     transaction_code = fields.EnumField(15, 17, TransactionCode)
+
+    def is_credit(self):
+        return self.transaction_code.name.startswith('credit')
+
+    def is_debit(self):
+        return self.transaction_code.name.startswith('debit')
+
+    def is_balance(self):
+        return self.transaction_code == TransactionCode.balance_record
+
+    def is_total(self):
+        return (self.transaction_code == TransactionCode.credit_total or
+                self.transaction_code == TransactionCode.debit_total)
 
 
 class DataRecord(BaseRecord):
