@@ -29,7 +29,7 @@ Usage
     with open(filename) as f:
         parsed = parse(f)
         if parsed.is_valid():
-            print(parsed.account.records[0].transaction_code)
+            print(parsed.accounts[0].records[0].transaction_code)
         else:
             print(parsed.errors)
 
