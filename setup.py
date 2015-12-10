@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='bankline-direct-parser',
-    version='0.1',
+    version='0.2',
     packages=[
         'bankline_parser', 'bankline_parser.data_services'
     ],
