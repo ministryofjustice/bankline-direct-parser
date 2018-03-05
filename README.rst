@@ -49,3 +49,10 @@ Model Layout
             UserHeaderLabel
             [DataRecord|BalanceRecord]
             UserTrailerLabel
+
+
+Copyright
+---------
+
+Copyright (C) 2018 HM Government (Ministry of Justice Digital Services).
+See LICENSE.txt for further details.
