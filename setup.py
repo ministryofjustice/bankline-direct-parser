@@ -6,7 +6,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 
 setup(
     name='bankline-direct-parser',
-    version='0.2',
+    version='0.3',
     author='Ministry of Justice',
     author_email='dev@digital.justice.gov.uk',
     url='https://github.com/ministryofjustice/bankline-direct-parser',

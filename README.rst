@@ -15,7 +15,7 @@ Installation
 
 .. code-block:: bash
 
-    pip install git+https://github.com/ministryofjustice/bankline-direct-parser.git
+    pip install bankline-direct-parser
 
 
 Usage
@@ -51,8 +51,23 @@ Model Layout
             UserTrailerLabel
 
 
+Development
+-----------
+
+.. image:: https://travis-ci.org/ministryofjustice/bankline-direct-parser.svg?branch=master
+    :target: https://travis-ci.org/ministryofjustice/bankline-direct-parser
+
+Please report bugs and open pull requests on `GitHub`_.
+
+Use ``python setup.py test`` or ``tox`` to run all tests.
+
+Distribute a new version by updating the ``version`` argument in ``setup.py:setup`` and run ``python setup.py sdist bdist_wheel upload``.
+
+
 Copyright
 ---------
 
 Copyright (C) 2018 HM Government (Ministry of Justice Digital Services).
 See LICENSE.txt for further details.
+
+.. _GitHub: https://github.com/ministryofjustice/bankline-direct-parser
