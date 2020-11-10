@@ -1,14 +1,28 @@
 #!/usr/bin/env python
+import importlib
 import os
+import sys
+import warnings
+
 from setuptools import setup
 
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+if sys.version_info[0:2] < (3, 6):
+    warnings.warn('This package is tested with Python version 3.6+')
+
+root_path = os.path.abspath(os.path.dirname(__file__))
+
+with open(os.path.join(root_path, 'README.rst')) as readme:
     README = readme.read()
+
+package_info = importlib.import_module('bankline_parser')
+
+install_requires = []
+tests_require = ['flake8']
 
 setup(
     name='bankline-direct-parser',
-    version='0.3',
-    author='Ministry of Justice',
+    version=package_info.__version__,
+    author=package_info.__author__,
     author_email='dev@digital.justice.gov.uk',
     url='https://github.com/ministryofjustice/bankline-direct-parser',
     packages=['bankline_parser', 'bankline_parser.data_services'],
@@ -24,11 +38,11 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
-    install_requires=[],
-    tests_require=['flake8'],
+    install_requires=install_requires,
+    tests_require=tests_require,
     test_suite='tests',
 )
