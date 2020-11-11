@@ -3,8 +3,7 @@ from datetime import datetime
 from .exceptions import ParseError
 
 
-class DataField(object):
-
+class DataField:
     def __init__(self, start, end, justification='r', fill_char=' ', pad_char=' '):
         self.start = start
         self.end = end
@@ -38,7 +37,6 @@ class TextField(DataField):
 
 
 class DateField(DataField):
-
     def parse(self, row_content):
         field_content = row_content[self.start:self.end]
         try:
@@ -48,9 +46,8 @@ class DateField(DataField):
 
 
 class NumericField(DataField):
-
     def parse(self, row_content):
-        field_content = super(NumericField, self).parse(row_content)
+        field_content = super().parse(row_content)
         if field_content:
             try:
                 return int(field_content)
@@ -61,16 +58,14 @@ class NumericField(DataField):
 
 
 class ZeroFilledField(DataField):
-
     def __init__(self, start, end, fill_char='0', **kwargs):
-        super(ZeroFilledField, self).__init__(start, end, fill_char=fill_char, **kwargs)
+        super().__init__(start, end, fill_char=fill_char, **kwargs)
 
 
 class EnumField(DataField):
-
     def __init__(self, start, end, enum, **kwargs):
         self.enum = enum
-        super(EnumField, self).__init__(start, end, **kwargs)
+        super().__init__(start, end, **kwargs)
 
     def parse(self, row_content):
         field_content = row_content[self.start:self.end]
@@ -81,13 +76,12 @@ class EnumField(DataField):
 
 
 class StaticField(DataField):
-
     def __init__(self, start, end, value, **kwargs):
         self.value = value
-        super(StaticField, self).__init__(start, end, **kwargs)
+        super().__init__(start, end, **kwargs)
 
     def parse(self, row_content):
-        field_content = super(StaticField, self).parse(row_content)
+        field_content = super().parse(row_content)
         if field_content == self.value:
             return field_content
         else:

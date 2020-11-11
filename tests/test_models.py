@@ -4,18 +4,30 @@ from datetime import datetime
 from bankline_parser.data_services import models
 from bankline_parser.data_services import enums
 
-vhl_row = ("VOL1                                 ****830000                " +
-           "                3                                                ")
-fhl_row = ("HDR1 A876543Z0001                      F     01 06032          " +
-           "    060320                                                       ")
-uhl_row = ("UHL1 06032876543    00000000         000              Datalink " +
-           "Test File                                                          ")
-data_record = ("8765438765432101112345678418953000000000006086                 " +
-               " 123456                               06032                      ")
-balance_record = ("123456671753150Y1              0000 000000038510000C0000000000000" +
-                  "00C000000056571776C000000038474276C 04036                      ")
-utl_row = ("UTL10000554186444000066690384400000150000010                   " +
-           "                                                                 ")
+vhl_row = (
+    'VOL1                                 ****830000                '
+    '                3                                                '
+)
+fhl_row = (
+    'HDR1 A876543Z0001                      F     01 06032          '
+    '    060320                                                       '
+)
+uhl_row = (
+    'UHL1 06032876543    00000000         000              Datalink '
+    'Test File                                                          '
+)
+data_record = (
+    '8765438765432101112345678418953000000000006086                 '
+    ' 123456                               06032                      '
+)
+balance_record = (
+    '123456671753150Y1              0000 000000038510000C0000000000000'
+    '00C000000056571776C000000038474276C 04036                      '
+)
+utl_row = (
+    'UTL10000554186444000066690384400000150000010                   '
+    '                                                                 '
+)
 
 
 class DataServicesRowsTestCase(unittest.TestCase):

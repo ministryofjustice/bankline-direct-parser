@@ -1,5 +1,4 @@
-class IndexTrackingIterator(object):
-
+class IndexTrackingIterator:
     def __init__(self, lines):
         self.iterator = iter(lines)
         self.current_index = 0

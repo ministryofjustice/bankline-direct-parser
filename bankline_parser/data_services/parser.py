@@ -46,10 +46,10 @@ def parse(iterable):
                 break
 
         if len(accounts) == 0:
-            raise ParseError("No accounts found in data services file")
+            raise ParseError('No accounts found in data services file')
 
         return models.DataServicesFile(volume_header_label, accounts)
     except ParseError as e:
-        raise ParseError("Line %s: %s" % (lines_iter.current_index, e))
+        raise ParseError('Line %s: %s' % (lines_iter.current_index, e))
     except StopIteration:
-        raise ParseError("File ended unexpectedly")
+        raise ParseError('File ended unexpectedly')

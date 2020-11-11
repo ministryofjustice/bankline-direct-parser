@@ -3,8 +3,7 @@ from .exceptions import ParseError
 from .enums import BalanceType, TransactionCode
 
 
-class DataServicesFile(object):
-
+class DataServicesFile:
     def __init__(self, volume_header_label, accounts):
         self.volume_header_label = volume_header_label
         self.accounts = accounts
@@ -28,8 +27,7 @@ class DataServicesFile(object):
         self.errors = errors
 
 
-class Account(object):
-
+class Account:
     def __init__(self, file_header_label, user_header_label,
                  records, user_trailer_label):
         self.file_header_label = file_header_label
@@ -64,36 +62,35 @@ class Account(object):
         utl = self.user_trailer_label
         if total_debit != utl.monetary_total_debit_items:
             errors.append(
-                "Monetary total of debit items does not match expected: " +
-                "counted %s, expected %s" %
+                'Monetary total of debit items does not match expected: ' +
+                'counted %s, expected %s' %
                 (total_debit, utl.monetary_total_debit_items))
         if count_debit != utl.count_debit_items:
             errors.append(
-                "Count of debit items does not match expected: " +
-                "counted %s, expected %s" %
+                'Count of debit items does not match expected: ' +
+                'counted %s, expected %s' %
                 (count_debit, utl.count_debit_items))
         if total_credit != utl.monetary_total_credit_items:
             errors.append(
-                "Monetary total of credit items does not match expected: " +
-                "counted %s, expected %s" %
+                'Monetary total of credit items does not match expected: ' +
+                'counted %s, expected %s' %
                 (total_credit, utl.monetary_total_credit_items))
         if count_credit != utl.count_credit_items:
             errors.append(
-                "Count of credit items does not match expected: " +
-                "counted %s, expected %s" %
+                'Count of credit items does not match expected: ' +
+                'counted %s, expected %s' %
                 (count_credit, utl.count_credit_items))
         if ((utl.count_balance_records is not None or count_balance > 0)
                 and count_balance != utl.count_balance_records):
             errors.append(
-                "Count of balance records does not match expected: " +
-                "counted %s, expected %s" %
+                'Count of balance records does not match expected: ' +
+                'counted %s, expected %s' %
                 (count_balance, utl.count_balance_records))
 
         self.errors = errors
 
 
-class Row(object):
-
+class Row:
     def __init__(self, row_content):
         for attr in dir(self):
             field = getattr(self, attr, None)
@@ -102,7 +99,7 @@ class Row(object):
                     output = field.parse(row_content)
                     setattr(self, attr, output)
                 except ParseError as e:
-                    raise ParseError("%s: %s" % (attr, e))
+                    raise ParseError('%s: %s' % (attr, e))
 
     def __str__(self):
         fields = []
