@@ -7,7 +7,7 @@ Python module for parsing Natwest/RBS Bankline Direct Data Services files.
 Requirements
 ------------
 
-Only python 3.4+ supported.
+Only Python 3.6+ is supported.
 
 
 Installation
