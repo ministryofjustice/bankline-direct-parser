@@ -7,13 +7,13 @@ Python module for parsing Natwest/RBS Bankline Direct Data Services files.
 Requirements
 ------------
 
-Only Python 3.6+ is supported.
+Only Python 3.7+ is supported.
 
 
 Installation
 ------------
 
-.. code-block:: bash
+.. code-block:: shell
 
     pip install bankline-direct-parser
 
@@ -54,9 +54,11 @@ Model Layout
 Development
 -----------
 
-.. image:: https://github.com/ministryofjustice/bankline-direct-parser/workflows/Run%20tests/badge.svg?branch=main
-    :target: https://github.com/ministryofjustice/bankline-direct-parser/actions
+.. image:: https://github.com/ministryofjustice/bankline-direct-parser/actions/workflows/test.yml/badge.svg?branch=main
+    :target: https://github.com/ministryofjustice/bankline-direct-parser/actions/workflows/test.yml
 
+.. image:: https://github.com/ministryofjustice/bankline-direct-parser/actions/workflows/lint.yml/badge.svg?branch=main
+    :target: https://github.com/ministryofjustice/bankline-direct-parser/actions/workflows/lint.yml
 
 Please report bugs and open pull requests on `GitHub`_.
 
