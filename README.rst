@@ -67,6 +67,20 @@ Use ``python setup.py test`` or ``tox`` to run all tests.
 Distribute a new version by updating the ``VERSION`` tuple in ``bankline_parser/__init__.py`` and
 publishing a release in GitHub (this triggers a GitHub Actions workflow to automatically upload it).
 Alternatively, run ``python setup.py sdist bdist_wheel upload`` locally.
+Remember to update `History`_.
+
+
+History
+-------
+
+0.7
+    Maintenance release, no library changes.
+
+0.2 - 0.6
+    No significant library changes, other than support for newer versions of python.
+
+0.1
+    Original release.
 
 
 Copyright
