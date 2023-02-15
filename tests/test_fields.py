@@ -1,7 +1,6 @@
 import unittest
 
-from bankline_parser.data_services import fields
-from bankline_parser.data_services import enums
+from bankline_parser.data_services import enums, fields
 from bankline_parser.data_services.exceptions import ParseError
 
 
