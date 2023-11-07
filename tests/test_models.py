@@ -1,8 +1,7 @@
 import unittest
 from datetime import datetime
 
-from bankline_parser.data_services import models
-from bankline_parser.data_services import enums
+from bankline_parser.data_services import enums, models
 
 vhl_row = (
     'VOL1                                 ****830000                '
