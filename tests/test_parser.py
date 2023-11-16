@@ -7,7 +7,6 @@ from .test_models import vhl_row
 
 
 class DataServicesParserTestCase(unittest.TestCase):
-
     def test_nwb_testfile_successful_parse(self):
         with open('tests/data/testfile_nwb') as f:
             output = parse(f)

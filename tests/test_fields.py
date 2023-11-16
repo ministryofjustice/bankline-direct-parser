@@ -5,7 +5,6 @@ from bankline_parser.data_services.exceptions import ParseError
 
 
 class DataServicesFieldsTestCase(unittest.TestCase):
-
     def test_text_field(self):
         row = 'amazing'
         text_field = fields.TextField(0, 7)

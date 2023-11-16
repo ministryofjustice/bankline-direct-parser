@@ -30,7 +30,6 @@ utl_row = (
 
 
 class DataServicesRowsTestCase(unittest.TestCase):
-
     def test_volume_header_label(self):
         vhl = models.VolumeHeaderLabel(vhl_row)
         self.assertEqual(vhl.label_identifier, 'VOL1')
