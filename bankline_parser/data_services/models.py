@@ -1,6 +1,6 @@
 from . import fields
-from .exceptions import ParseError
 from .enums import BalanceType, TransactionCode
+from .exceptions import ParseError
 
 
 class DataServicesFile:
@@ -15,14 +15,14 @@ class DataServicesFile:
         return self.accounts[0] if self.accounts else None
 
     def is_valid(self):
-        return False if self.errors else True
+        return not self.errors
 
     def validate(self):
         errors = {}
 
         for i, account in enumerate(self.accounts):
             if not account.is_valid():
-                errors['account %s' % i] = account.errors
+                errors[f'account {i}'] = account.errors
 
         self.errors = errors
 
@@ -38,7 +38,7 @@ class Account:
         self.validate()
 
     def is_valid(self):
-        return False if self.errors else True
+        return not self.errors
 
     def validate(self):
         errors = []
@@ -62,30 +62,30 @@ class Account:
         utl = self.user_trailer_label
         if total_debit != utl.monetary_total_debit_items:
             errors.append(
-                'Monetary total of debit items does not match expected: ' +
-                'counted %s, expected %s' %
-                (total_debit, utl.monetary_total_debit_items))
+                'Monetary total of debit items does not match expected: '
+                f'counted {total_debit}, expected {utl.monetary_total_debit_items}',
+            )
         if count_debit != utl.count_debit_items:
             errors.append(
-                'Count of debit items does not match expected: ' +
-                'counted %s, expected %s' %
-                (count_debit, utl.count_debit_items))
+                'Count of debit items does not match expected: '
+                f'counted {count_debit}, expected {utl.count_debit_items}',
+            )
         if total_credit != utl.monetary_total_credit_items:
             errors.append(
-                'Monetary total of credit items does not match expected: ' +
-                'counted %s, expected %s' %
-                (total_credit, utl.monetary_total_credit_items))
+                'Monetary total of credit items does not match expected: '
+                f'counted {total_credit}, expected {utl.monetary_total_credit_items}',
+            )
         if count_credit != utl.count_credit_items:
             errors.append(
-                'Count of credit items does not match expected: ' +
-                'counted %s, expected %s' %
-                (count_credit, utl.count_credit_items))
+                'Count of credit items does not match expected: '
+                f'counted {count_credit}, expected {utl.count_credit_items}',
+            )
         if ((utl.count_balance_records is not None or count_balance > 0)
                 and count_balance != utl.count_balance_records):
             errors.append(
-                'Count of balance records does not match expected: ' +
-                'counted %s, expected %s' %
-                (count_balance, utl.count_balance_records))
+                'Count of balance records does not match expected: '
+                f'counted {count_balance}, expected {utl.count_balance_records}',
+            )
 
         self.errors = errors
 
@@ -99,14 +99,14 @@ class Row:
                     output = field.parse(row_content)
                     setattr(self, attr, output)
                 except ParseError as e:
-                    raise ParseError('%s: %s' % (attr, e))
+                    raise ParseError(f'{attr}: {e}')
 
     def __str__(self):
         fields = []
         for attr in dir(self):
             if attr not in dir(type('o', (object,), {})):
-                fields.append('%s: %s' % (attr, getattr(self, attr)))
-        return '<' + self.__class__.__name__ + ' <' + ', '.join(fields) + '>>'
+                fields.append(f'{attr}: {getattr(self, attr)}')
+        return f'<{self.__class__.__name__} <{", ".join(fields)}>>'
 
 
 class VolumeHeaderLabel(Row):
