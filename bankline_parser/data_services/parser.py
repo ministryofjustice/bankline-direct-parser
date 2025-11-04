@@ -50,6 +50,6 @@ def parse(iterable):
 
         return models.DataServicesFile(volume_header_label, accounts)
     except ParseError as e:
-        raise ParseError('Line %s: %s' % (lines_iter.current_index, e))
+        raise ParseError(f'Line {lines_iter.current_index}: {e}')
     except StopIteration:
         raise ParseError('File ended unexpectedly')

@@ -16,11 +16,11 @@ class DataServicesParserTestCase(unittest.TestCase):
         self.assertEqual(len(output.account.records), 29)
         self.assertEqual(
             output.account.user_trailer_label.monetary_total_debit_items,
-            278225388
+            278225388,
         )
         self.assertEqual(
             output.account.user_trailer_label.monetary_total_credit_items,
-            105598692
+            105598692,
         )
 
     def test_rbs_testfile_successful_parse(self):
@@ -32,11 +32,11 @@ class DataServicesParserTestCase(unittest.TestCase):
         self.assertEqual(len(output.account.records), 25)
         self.assertEqual(
             output.account.user_trailer_label.monetary_total_debit_items,
-            554186444
+            554186444,
         )
         self.assertEqual(
             output.account.user_trailer_label.monetary_total_credit_items,
-            666903844
+            666903844,
         )
 
     def test_empty_file_fails(self):

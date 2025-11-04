@@ -23,11 +23,11 @@ class DataField:
                 if field_content[i] == self.pad_char:
                     continue
                 else:
-                    return field_content[:i+1]
+                    return field_content[:i + 1]
 
     def parse(self, row_content):
         field_content = row_content[self.start:self.end]
-        if field_content == self.fill_char*(self.end-self.start):
+        if field_content == self.fill_char * (self.end - self.start):
             return None
         return self._strip_padding(field_content)
 
@@ -86,6 +86,5 @@ class StaticField(DataField):
             return field_content
         else:
             raise ParseError(
-                "Field content '%s' does not match expected static value '%s'"
-                % (field_content, self.value)
+                f"Field content '{field_content}' does not match expected static value '{self.value}'",
             )
